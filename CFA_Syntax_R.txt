@@ -1,0 +1,23 @@
+##CFA 36 items, 7 dimension structure, MLR estimator##
+
+
+m2srcd7 <- 'CSQK =~ NA*CSQK_2 + CSQK_3 + CSQK_4 + CSQK_5
+            ELO =~ NA*ELO_6 + ELO_7 + ELO_8 + ELO_9 + ELO_10 + ELO_11 + ELO_12 +
+                ELO_13 
+            ID =~ NA*ID_14 + ID_15 + ID_16 + ID_17 + ID_18 + ID_19 + ID_20
+            CHL =~ NA*CHL_21 + CHL_22 + CHL_24 + PE_37
+            PLO =~ NA*PLO_27 + PLO_28 + PLO_29 + PLO_30 + PLO_31
+	        LM =~ NA*PLO_25 + PLO_26 + PE_39
+            PE =~ NA*PE_34 + PE_35+ PE_36 + PE_38 + PE_40
+            ###set each variance to 1 to set to scale
+              CSQK ~~ 1*CSQK
+              ELO ~~ 1*ELO
+              ID ~~ 1*ID
+              CHL ~~ 1*CHL
+              PLO ~~ 1*PLO
+              LM ~~ 1*LM
+              PE ~~ 1*PE'
+sevenfacsrcd <- cfa(m2srcd7, data =wave2cleanfactor, estimator = "MLR")
+summary(sevenfacsrcd, fit.measures=TRUE, ##to obtain measures of fit
+        standardized=TRUE) ##std.all fully standardized solution
+
